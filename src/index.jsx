@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Ratings from './Ratings.jsx';
 
 ReactDOM.render(
-    <h1>Hello, worldddd!</h1>,
+    <Ratings/>,
     document.getElementById('root')
   );
   
