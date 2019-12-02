@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1575257321879" clover="3.2.0">
+  <project timestamp="1575257321879" name="All files">
+    <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="10" coveredelements="10" complexity="0" loc="10" ncloc="10" packages="1" files="2" classes="2"/>
+    <file name="Rating.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/database/Rating.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+    </file>
+    <file name="index.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/database/index.js">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
