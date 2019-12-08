@@ -4,9 +4,10 @@ const RatingsStyle = {};
 
 RatingsStyle.Wrapper = styled.div`
 padding: 4em;
+padding-bottom: 6em;
 background: #1B1B1D;
 display: grid;
-width: 100%
+width: 100%;
 height: auto
 `;
 
@@ -31,7 +32,7 @@ RatingsStyle.MainContainer = styled.div`
 display: table;
 background-color: #1B1B1D;
 width: 100%;
-height: 200px;
+height: auto;
 `;
 
 RatingsStyle.RatingCircle = styled.div`
@@ -56,7 +57,7 @@ RatingsStyle.ProgressBarContainer = styled.div`
 display: table;
 float: right;
 margin-right: 500px;
-height: 200px;
+height: auto;
 width: 430px;
 background-color: #1B1B1D;
 `;

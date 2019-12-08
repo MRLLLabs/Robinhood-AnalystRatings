@@ -31,9 +31,19 @@ SellSummaryStyle.SellSpeechBubble = styled.div `
   `;
 
   SellSummaryStyle.RatingSummaryBody = styled.div`
+  display: inline;
   font-family: 'DINPro-Regular';
   font-size: 13px;
   color: white;
+  `;
+
+  SellSummaryStyle.RatingSummaryHiddenBody = styled.div`
+  font-family: 'DINPro-Regular';
+  font-size: 13px;
+  color: white;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out
   `;
 
   SellSummaryStyle.ReadMore = styled.div`

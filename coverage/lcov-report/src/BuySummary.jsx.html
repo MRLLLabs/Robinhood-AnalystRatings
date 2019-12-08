@@ -20,10 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-
-        <span class="strong">100% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/10</span>
+        <span class='fraction'>11/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -31,16 +30,14 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/10</span>
-
-
+        <span class='fraction'>11/12</span>
       </div>
     </div>
     <p class="quiet">
@@ -116,31 +113,37 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">12x</span>
-
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,16 +156,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-
 <span class="cline-any cline-yes">13x</span>
-
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-
 <span class="cline-any cline-yes">2x</span>
-
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,9 +178,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-
 <span class="cline-any cline-yes">27x</span>
-
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,26 +200,27 @@ import BuySummaryStyle from './styled-components/BuySummary-style';
               readMore: false,
           }
           this.readClicked = this.readClicked.bind(this);
+          this.pointer = this.pointer.bind(this);
       }
 &nbsp;
-
       readClicked() {
         this.setState({readMore: !this.state.readMore})
-
         
       }
 &nbsp;
+<span class="fstat-no" title="function not covered" >      po</span>inter(e) {
+<span class="cstat-no" title="statement not covered" >        e.target.style.cursor = 'pointer';</span>
+    }
+&nbsp;
       read() {
-
         if(!this.state.readMore) {
-
             if(this.props.summary) {
                 return(
                     &lt;div&gt;
                     &lt;BuySummaryStyle.RatingSummaryBody&gt;
                         "{this.props.summary.split(' ').splice(0,8).join(' ')}"
                     &lt;/BuySummaryStyle.RatingSummaryBody&gt;
-                        &lt;BuySummaryStyle.ReadMore onClick={this.readClicked} style={{color: this.props.color}}&gt;
+                        &lt;BuySummaryStyle.ReadMore onClick={this.readClicked} onMouseOver={this.pointer} style={{color: this.props.color}}&gt;
                            Read More
                     &lt;/BuySummaryStyle.ReadMore&gt;
                     &lt;BuySummaryStyle.Source&gt;Morningstar&lt;/BuySummaryStyle.Source&gt;
@@ -235,14 +233,12 @@ import BuySummaryStyle from './styled-components/BuySummary-style';
                 )
             }
         } else {
-
             return(
-
                 &lt;div&gt;
                 &lt;BuySummaryStyle.RatingSummaryBody&gt;
                     "{this.props.summary}"
                 &lt;/BuySummaryStyle.RatingSummaryBody&gt;
-                &lt;BuySummaryStyle.ReadMore onClick={this.readClicked} style={{color: this.props.color}}&gt;
+                &lt;BuySummaryStyle.ReadMore onClick={this.readClicked} onMouseOver={this.pointer} style={{color: this.props.color}}&gt;
                      Read Less
                 &lt;/BuySummaryStyle.ReadMore&gt;
                 &lt;BuySummaryStyle.Source&gt;Morningstar&lt;/BuySummaryStyle.Source&gt;
@@ -272,9 +268,7 @@ import BuySummaryStyle from './styled-components/BuySummary-style';
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 05 2019 13:46:42 GMT-0800 (PST)
-
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 07 2019 17:04:54 GMT-0800 (PST)
 </div>
 </div>
 <script src="../prettify.js"></script>

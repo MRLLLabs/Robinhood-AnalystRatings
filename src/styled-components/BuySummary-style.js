@@ -36,6 +36,15 @@ BuySummaryStyle.BuySpeechBubble = styled.div `
   color: white;
   `;
 
+  BuySummaryStyle.RatingSummaryHiddenBody = styled.div`
+  font-family: 'DINPro-Regular';
+  font-size: 13px;
+  color: white;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out
+  `;
+
   BuySummaryStyle.ReadMore = styled.div`
   font-family: 'DINPro-Medium';
   font-size: 13px;

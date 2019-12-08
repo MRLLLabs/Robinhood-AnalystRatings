@@ -8,47 +8,58 @@ import BuySummaryStyle from './styled-components/BuySummary-style';
               readMore: false,
           }
           this.readClicked = this.readClicked.bind(this);
+          this.pointer = this.pointer.bind(this);
       }
 
-      readClicked() {
+      readClicked(e) {
         this.setState({readMore: !this.state.readMore})
+        var collapse = document.getElementById("buy-collapse");
+
+        if (collapse.style.maxHeight) {
+            collapse.style.maxHeight = null;
+            e.target.innerHTML = "Read More"    
+        } else {
+            collapse.style.maxHeight = collapse.scrollHeight + 'px';
+            e.target.innerHTML = "Read Less"
+        }  
         
       }
 
+      pointer(e) {
+        e.target.style.cursor = 'pointer';
+    }
+
       read() {
-        if(!this.state.readMore) {
-            if(this.props.summary) {
-                return(
-                    <div>
-                    <BuySummaryStyle.RatingSummaryBody>
-                        "{this.props.summary.split(' ').splice(0,8).join(' ')}"
-                    </BuySummaryStyle.RatingSummaryBody>
-                        <BuySummaryStyle.ReadMore onClick={this.readClicked} style={{color: this.props.color}}>
-                           Read More
-                    </BuySummaryStyle.ReadMore>
-                    <BuySummaryStyle.Source>Morningstar</BuySummaryStyle.Source>
-                    </div>
-                    
-                )
+        if(this.props.summary) {
+            var info;
+            var hiddenInfo = this.props.summary.split('.').splice(2,100).join('.');
+            if (this.state.readMore === false) {
+                info = this.props.summary.split('.').splice(0,2).join('.') + '."';
             } else {
-                return(
-                    null
-                )
+                info = this.props.summary.split('.').splice(0,2).join('.') + '.';
             }
-        } else {
             return(
                 <div>
                 <BuySummaryStyle.RatingSummaryBody>
-                    "{this.props.summary}"
+                    "{info}
                 </BuySummaryStyle.RatingSummaryBody>
-                <BuySummaryStyle.ReadMore onClick={this.readClicked} style={{color: this.props.color}}>
-                     Read Less
+                <BuySummaryStyle.RatingSummaryHiddenBody id="buy-collapse">
+                    <br /> {hiddenInfo}"
+                </BuySummaryStyle.RatingSummaryHiddenBody>
+                    <BuySummaryStyle.ReadMore onClick={this.readClicked} onMouseOver={this.pointer} style={{color: this.props.color}}>
+                       Read More
                 </BuySummaryStyle.ReadMore>
                 <BuySummaryStyle.Source>Morningstar</BuySummaryStyle.Source>
                 </div>
+                
+            )
+        } else {
+            return(
+                null
             )
         }
-    }
+}
+
 
 
 

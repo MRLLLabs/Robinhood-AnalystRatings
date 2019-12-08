@@ -12,6 +12,7 @@ class Ratings extends React.Component {
             currentData: {},
             color: 'white',
             circleColor: 'white',
+            priceTag: ''
         }
     }
 
@@ -28,9 +29,9 @@ class Ratings extends React.Component {
         this.setState({color: color})
 
         if (color === `#21CE99`) {
-            this.setState({circleColor: `rgb(33, 206, 153, .1)`}) 
+            this.setState({circleColor: `rgb(33, 206, 153, .1)`, priceTag:'green' })
         } else {
-            this.setState({circleColor: `rgb(244, 85, 49, .1)`}) 
+            this.setState({circleColor: `rgb(244, 85, 49, .1)`, priceTag: 'red'}) 
         }
     }
     
@@ -42,7 +43,8 @@ class Ratings extends React.Component {
                 <RatingsStyle.LineBreak />
                 <RatingsStyle.MainContainer>
                 <RatingsStyle.RatingCircle style={{background: this.state.circleColor}}>
-                    <RatingsStyle.CircleContent style={{fontSize:'26px', color: this.state.color}}>{this.state.currentData.buyRating}
+                    <RatingsStyle.CircleContent style={{fontSize:'26px', color: this.state.color}}>
+                    <img src={`${this.state.priceTag}-price.png`} style={{background: this.state.color}}></img> {this.state.currentData.buyRating}
                     <div style={{fontSize:'13px'}}> of 43 ratings</div></RatingsStyle.CircleContent>
                 </RatingsStyle.RatingCircle>
                 
