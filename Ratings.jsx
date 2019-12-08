@@ -2,22 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 
-const changeColor = () => {
-    var colors = [`#21CE99`, `#F45531`];
-    return colors[Math.round(Math.random() * (1 - 0) + 0)]
-}
+import BuySummary from './BuySummary.jsx';
+import SellSummary from './SellSummary.jsx';
 
-const color = changeColor();
-
-const changeCircleColor = () => {
-    if (color === `#21CE99`) {
-        return `rgb(33, 206, 153, .3)`
-    } else {
-        return `rgb(244, 85, 49, .3)`
-    }
-}
-
-const circleColor = changeCircleColor();
 
 const Wrapper = styled.div`
 padding: 4em;
@@ -55,7 +42,7 @@ const RatingCircle = styled.div`
   float: left;
   height: 130px;
   width: 130px;
-  background-color: ${circleColor};
+
   border-radius: 50%;  
 `;
 
@@ -64,22 +51,24 @@ display: table-cell;
 vertical-align: middle; 
 text-align: center; 
 font-family: 'DINPro-Medium';
-color: ${color};
+
 margin: 0;
 `;
 
 const ProgressBarContainer = styled.div`
 display: table;
 float: right;
-margin-right: 250px;
+
+margin-right: 400px;
 height: 200px;
-width: 400px;
+width: 430px;
+
 background-color: #1B1B1D;
 `;
 
 const ProgressTitle = styled.div`
 text-align: start;
-color: ${color};
+
 font-family: 'DINPro-Medium';
 font-size: 13px;
 `;
@@ -87,7 +76,7 @@ font-size: 13px;
 const Meter = styled.div` 
 	height: 6px; 
 	position: relative;
-	background: ${circleColor};
+
     border-radius: 25px;
     margin-bottom: 20px;
 `;
@@ -100,7 +89,7 @@ const MeterLabel = styled.div`
     right: 0;
     font-family: 'DINPro-Medium';
     font-size: 13px;
-    color: ${color}
+
 
 `;
 
@@ -111,7 +100,7 @@ const MeterSpan = styled.span`
     border-bottom-right-radius: 8px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background: ${color};
+
     position: relative;
     overflow: hidden;
     text-align: end;
@@ -119,22 +108,49 @@ const MeterSpan = styled.span`
   `;
 
 
+  const ArticleContainer = styled.div`
+  float: right;
+  height: 300px;
+  width: 100%;
+  background: #1B1B1D;
+  `;
+
+
 class Ratings extends React.Component {
     constructor() {
         super();
         this.state = {
-            currentData: {}
+
+            currentData: {},
+            color: 'white',
+            circleColor: 'white',
+
         }
     }
 
     componentDidMount() {
+
+        this.changeColor();
         axios.get('/ratings/5de381dbbdbfd8140c1dc3f6').then((response) => {
             this.setState({currentData: response.data});
-            console.log(response.data)
         }).catch((err) => {
             console.log(err);
         })
     }
+
+    changeColor() {
+        var colors = [`#21CE99`, `#F45531`];
+        var color = colors[Math.round(Math.random() * (1 - 0) + 0)];
+        this.setState({color: color})
+
+        if (color === `#21CE99`) {
+            this.setState({circleColor: `rgb(33, 206, 153, .3)`}) 
+        } else {
+            this.setState({circleColor: `rgb(244, 85, 49, .3)`}) 
+        }
+    }
+    
+
 
     render() {
         return (
@@ -142,15 +158,18 @@ class Ratings extends React.Component {
                 <RatingsTitle>Analyst Ratings</RatingsTitle>
                 <LineBreak />
                 <MainContainer>
-                <RatingCircle>
-                    <CircleContent style={{fontSize:'26px'}}>{this.state.currentData.buyRating}
+
+                <RatingCircle style={{background: this.state.circleColor}}>
+                    <CircleContent style={{fontSize:'26px', color: this.state.color}}>{this.state.currentData.buyRating}
+
                     <div style={{fontSize:'13px'}}> of 43 ratings</div></CircleContent>
                 </RatingCircle>
                 
                <ProgressBarContainer>
-               <span><ProgressTitle>Buy</ProgressTitle>
-               <Meter><MeterLabel>50%</MeterLabel>
-               <MeterSpan style={{width: this.state.currentData.buyRating}}></MeterSpan>
+               <span><ProgressTitle style={{color: this.state.color}}>Buy</ProgressTitle>
+               <Meter style={{background: this.state.circleColor}}><MeterLabel style={{color: this.state.color}}>50%</MeterLabel>
+               <MeterSpan style={{width: this.state.currentData.buyRating, background: this.state.color}}></MeterSpan>
+
                </Meter></span>
                
                <ProgressTitle style={{color: 'white'}}>Hold</ProgressTitle>
@@ -160,8 +179,15 @@ class Ratings extends React.Component {
              
                <ProgressTitle style={{color: 'white'}}>Sell</ProgressTitle>
                <Meter style={{background: 'black'}}>
-               <MeterSpan style={{width: this.state.currentData.sellRating, background: 'white'}}>{this.state.currentData.sellRating}</MeterSpan>
+
+               <MeterSpan style={{width: this.state.currentData.sellRating, background: 'white'}}></MeterSpan>
                </Meter>
+
+               <ArticleContainer>
+               <BuySummary summary={this.state.currentData.buySummary} color={this.state.color} />
+               <SellSummary summary={this.state.currentData.sellSummary} color={this.state.color}/>
+               </ArticleContainer>
+                  
                </ProgressBarContainer>
 
 
@@ -173,12 +199,3 @@ class Ratings extends React.Component {
 }
 
 export default Ratings;
-
-{/* <div>
-              <div>Buy</div><div>{this.state.currentData.buyRating}</div>
-              <div>Hold</div><div>{this.state.currentData.holdRating}</div>
-              <div>Sell</div><div>{this.state.currentData.sellRating}</div>
-              <div>Buy Summary</div><div>{this.state.currentData.buySummary}</div>
-              <div>Sell Summary</div><div>{this.state.currentData.sellSummary}</div>
-              <button onClick={this.getAnalystRatings}>Get Analyst Ratings</button>
-            </div> */}
