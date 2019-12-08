@@ -3,6 +3,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Ratings from '../src/Ratings'
+
 import RatingsStyle from '../src/styled-components/Ratings-style'
 
 

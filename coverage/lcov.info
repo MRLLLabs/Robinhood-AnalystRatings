@@ -33,6 +33,7 @@ FN:13,(anonymous_1)
 FN:18,(anonymous_2)
 FN:55,(anonymous_3)
 FNF:4
+
 FNH:4
 FNDA:11,(anonymous_0)
 FNDA:2,(anonymous_1)
@@ -56,6 +57,7 @@ BRDA:20,1,0,12
 BRDA:20,1,1,13
 BRF:4
 BRH:4
+
 end_of_record
 TN:
 SF:/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/Ratings.jsx
@@ -82,6 +84,7 @@ DA:26,6
 DA:27,6
 DA:28,6
 DA:30,6
+
 DA:31,3
 DA:33,3
 DA:39,19
@@ -89,6 +92,7 @@ LF:12
 LH:11
 BRDA:30,0,0,3
 BRDA:30,0,1,3
+
 BRF:2
 BRH:2
 end_of_record
@@ -99,6 +103,7 @@ FN:13,(anonymous_1)
 FN:17,(anonymous_2)
 FN:54,(anonymous_3)
 FNF:4
+
 FNH:4
 FNDA:11,(anonymous_0)
 FNDA:2,(anonymous_1)
@@ -122,11 +127,13 @@ BRDA:19,1,0,12
 BRDA:19,1,1,13
 BRF:4
 BRH:4
+
 end_of_record
 TN:
 SF:/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/styled-components/BuySummary-style.js
 FNF:0
 FNH:0
+
 DA:3,2
 DA:5,2
 DA:17,2
@@ -134,6 +141,7 @@ DA:26,2
 DA:33,2
 DA:39,2
 DA:45,2
+
 LF:7
 LH:7
 BRF:0
@@ -165,6 +173,7 @@ TN:
 SF:/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/styled-components/SellSummary-style.js
 FNF:0
 FNH:0
+
 DA:3,2
 DA:5,2
 DA:17,2
@@ -172,6 +181,7 @@ DA:26,2
 DA:33,2
 DA:39,2
 DA:45,2
+
 LF:7
 LH:7
 BRF:0
