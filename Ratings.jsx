@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
+
 import BuySummary from './BuySummary.jsx';
 import SellSummary from './SellSummary.jsx';
 
@@ -41,6 +42,7 @@ const RatingCircle = styled.div`
   float: left;
   height: 130px;
   width: 130px;
+
   border-radius: 50%;  
 `;
 
@@ -49,20 +51,24 @@ display: table-cell;
 vertical-align: middle; 
 text-align: center; 
 font-family: 'DINPro-Medium';
+
 margin: 0;
 `;
 
 const ProgressBarContainer = styled.div`
 display: table;
 float: right;
+
 margin-right: 400px;
 height: 200px;
 width: 430px;
+
 background-color: #1B1B1D;
 `;
 
 const ProgressTitle = styled.div`
 text-align: start;
+
 font-family: 'DINPro-Medium';
 font-size: 13px;
 `;
@@ -70,6 +76,7 @@ font-size: 13px;
 const Meter = styled.div` 
 	height: 6px; 
 	position: relative;
+
     border-radius: 25px;
     margin-bottom: 20px;
 `;
@@ -82,6 +89,8 @@ const MeterLabel = styled.div`
     right: 0;
     font-family: 'DINPro-Medium';
     font-size: 13px;
+
+
 `;
 
 const MeterSpan = styled.span`
@@ -91,11 +100,13 @@ const MeterSpan = styled.span`
     border-bottom-right-radius: 8px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+
     position: relative;
     overflow: hidden;
     text-align: end;
     font-size: 13px;
   `;
+
 
   const ArticleContainer = styled.div`
   float: right;
@@ -104,17 +115,21 @@ const MeterSpan = styled.span`
   background: #1B1B1D;
   `;
 
+
 class Ratings extends React.Component {
     constructor() {
         super();
         this.state = {
+
             currentData: {},
             color: 'white',
             circleColor: 'white',
+
         }
     }
 
     componentDidMount() {
+
         this.changeColor();
         axios.get('/ratings/5de381dbbdbfd8140c1dc3f6').then((response) => {
             this.setState({currentData: response.data});
@@ -122,6 +137,7 @@ class Ratings extends React.Component {
             console.log(err);
         })
     }
+
     changeColor() {
         var colors = [`#21CE99`, `#F45531`];
         var color = colors[Math.round(Math.random() * (1 - 0) + 0)];
@@ -135,14 +151,17 @@ class Ratings extends React.Component {
     }
     
 
+
     render() {
         return (
             <Wrapper>
                 <RatingsTitle>Analyst Ratings</RatingsTitle>
                 <LineBreak />
                 <MainContainer>
+
                 <RatingCircle style={{background: this.state.circleColor}}>
                     <CircleContent style={{fontSize:'26px', color: this.state.color}}>{this.state.currentData.buyRating}
+
                     <div style={{fontSize:'13px'}}> of 43 ratings</div></CircleContent>
                 </RatingCircle>
                 
@@ -150,6 +169,7 @@ class Ratings extends React.Component {
                <span><ProgressTitle style={{color: this.state.color}}>Buy</ProgressTitle>
                <Meter style={{background: this.state.circleColor}}><MeterLabel style={{color: this.state.color}}>50%</MeterLabel>
                <MeterSpan style={{width: this.state.currentData.buyRating, background: this.state.color}}></MeterSpan>
+
                </Meter></span>
                
                <ProgressTitle style={{color: 'white'}}>Hold</ProgressTitle>
@@ -159,6 +179,7 @@ class Ratings extends React.Component {
              
                <ProgressTitle style={{color: 'white'}}>Sell</ProgressTitle>
                <Meter style={{background: 'black'}}>
+
                <MeterSpan style={{width: this.state.currentData.sellRating, background: 'white'}}></MeterSpan>
                </Meter>
 
@@ -166,12 +187,11 @@ class Ratings extends React.Component {
                <BuySummary summary={this.state.currentData.buySummary} color={this.state.color} />
                <SellSummary summary={this.state.currentData.sellSummary} color={this.state.color}/>
                </ArticleContainer>
-        
+                  
                </ProgressBarContainer>
 
 
                 </MainContainer>
-               
                 
             </Wrapper>
         )
