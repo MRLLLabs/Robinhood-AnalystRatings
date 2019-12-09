@@ -36,13 +36,13 @@ height: auto;
 `;
 
 RatingsStyle.RatingCircle = styled.div`
-  margin-left: 60px;
-  margin-right: 20px;
-  display: table;
-  float: left;
-  height: 130px;
-  width: 130px;
-  border-radius: 50%;  
+margin-left: 60px;
+margin-right: 20px;
+display: table;
+float: left;
+height: 130px;
+width: 130px;
+border-radius: 50%;  
 `;
 
 RatingsStyle.CircleContent = styled.div`
@@ -70,41 +70,42 @@ font-size: 13px;
 `;
 
 RatingsStyle.Meter = styled.div` 
-	height: 6px; 
-	position: relative;
-    border-radius: 25px;
-    margin-bottom: 20px;
+height: 6px; 
+position: relative;
+border-radius: 25px;
+margin-bottom: 20px;
 `;
 
 RatingsStyle.MeterLabel = styled.div`
-    position: absolute;
-    text-align: end;
-    bottom: -4px;
-    right: 0;
-    font-family: 'DINPro-Medium';
-    font-size: 13px;
-    vertical-align: 0;
-    left: 0;
+position: absolute;
+text-align: end;
+bottom: -4px;
+right: 0;
+font-family: 'DINPro-Medium';
+font-size: 13px;
+vertical-align: 0;
+left: 0;
 `;
 
+
 RatingsStyle.MeterSpan = styled.span`
-    display: block;
-    height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    text-align: end;
-    font-size: 13px;
-  `;
+display: block;
+height: 100%;
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+position: relative;
+overflow: hidden;
+text-align: end;
+font-size: 13px;
+`;
 
-  RatingsStyle.ArticleContainer = styled.div`
-  float: right;
-  height: 300px;
-  width: 100%;
-  background: #1B1B1D;
-  `;
+RatingsStyle.ArticleContainer = styled.div`
+float: right;
+height: 300px;
+width: 100%;
+background: #1B1B1D;
+`;
 
-  export default RatingsStyle;
+export default RatingsStyle;
