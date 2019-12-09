@@ -7,6 +7,7 @@ var sampleData = function (){
     
     for (var i = 0; i < 100; i++ ) {
         var info = {};
+        info.id = i;
         info.company = faker.company.companyName();
         info.buySummary = faker.lorem.paragraph();
         info.sellSummary = faker.lorem.paragraph();

@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ratings/:id', (req, res) => {
     var id = req.params.id;
-    Rating.findById(id, (err, response) => {
+    Rating.findOne({id: id}, (err, response) => {
         if (err) {
             console.log (err);
         } else {
