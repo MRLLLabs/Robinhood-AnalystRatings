@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1575767094377" clover="3.2.0">
-  <project timestamp="1575767094377" name="All files">
-    <metrics statements="82" coveredstatements="73" conditionals="10" coveredconditionals="8" methods="16" coveredmethods="12" elements="108" coveredelements="93" complexity="0" loc="82" ncloc="82" packages="3" files="8" classes="8"/>
+<coverage generated="1575833822352" clover="3.2.0">
+  <project timestamp="1575833822352" name="All files">
+    <metrics statements="91" coveredstatements="80" conditionals="14" coveredconditionals="10" methods="16" coveredmethods="12" elements="121" coveredelements="102" complexity="0" loc="91" ncloc="91" packages="3" files="8" classes="8"/>
     <package name="database">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Rating.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/database/Rating.js">
@@ -22,88 +22,97 @@
       </file>
     </package>
     <package name="src">
-      <metrics statements="44" coveredstatements="35" conditionals="10" coveredconditionals="8" methods="16" coveredmethods="12"/>
+      <metrics statements="52" coveredstatements="41" conditionals="14" coveredconditionals="10" methods="16" coveredmethods="12"/>
       <file name="BuySummary.jsx" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/BuySummary.jsx">
-        <metrics statements="12" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="4"/>
+        <metrics statements="20" coveredstatements="15" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="4"/>
         <line num="6" count="11" type="stmt"/>
         <line num="7" count="11" type="stmt"/>
         <line num="10" count="11" type="stmt"/>
         <line num="11" count="11" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="24" count="27" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="25" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="12" type="stmt"/>
-        <line num="39" count="13" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="61" count="27" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="27" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="14" type="stmt"/>
+        <line num="36" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="12" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="41" count="14" type="stmt"/>
+        <line num="57" count="13" type="stmt"/>
+        <line num="67" count="27" type="stmt"/>
       </file>
       <file name="Ratings.jsx" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/Ratings.jsx">
         <metrics statements="12" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="4"/>
         <line num="10" count="7" type="stmt"/>
         <line num="11" count="7" type="stmt"/>
-        <line num="19" count="6" type="stmt"/>
         <line num="20" count="6" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="26" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="27" count="6" type="stmt"/>
         <line num="28" count="6" type="stmt"/>
-        <line num="30" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="4" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="39" count="19" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="31" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="40" count="19" type="stmt"/>
       </file>
       <file name="SellSummary.jsx" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/SellSummary.jsx">
-        <metrics statements="20" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4"/>
+        <metrics statements="20" coveredstatements="15" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="4"/>
+        <line num="7" count="11" type="stmt"/>
         <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
         <line num="13" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="41" count="25" type="cond" truecount="2" falsecount="0"/>
-        <line num="42" count="12" type="stmt"/>
-        <line num="43" count="12" type="stmt"/>
-        <line num="44" count="12" type="stmt"/>
-        <line num="60" count="13" type="stmt"/>
-        <line num="69" count="25" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="27" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="14" type="stmt"/>
+        <line num="37" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="12" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="42" count="14" type="stmt"/>
+        <line num="58" count="13" type="stmt"/>
+        <line num="67" count="27" type="stmt"/>
       </file>
     </package>
     <package name="src.styled-components">
-      <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="BuySummary-style.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/styled-components/BuySummary-style.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
         <line num="39" count="2" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
       </file>
       <file name="Ratings-style.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/styled-components/Ratings-style.js">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-        <line num="71" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
       </file>
       <file name="SellSummary-style.js" path="/Users/kellywillard/hrsf124/Robinhood/RobinHood-AnalystRatings/src/styled-components/SellSummary-style.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -113,8 +122,8 @@
         <line num="26" count="2" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
       </file>
     </package>
   </project>

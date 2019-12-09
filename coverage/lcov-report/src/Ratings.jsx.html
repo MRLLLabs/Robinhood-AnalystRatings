@@ -132,7 +132,9 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,6 +145,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,15 +165,16 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,28 +236,29 @@ class Ratings extends React.Component {
             currentData: {},
             color: 'white',
             circleColor: 'white',
+            priceTag: ''
         }
     }
 &nbsp;
     componentDidMount() {
         this.changeColor();
         axios.get('/ratings/5de381dbbdbfd8140c1dc3f6').then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-<span class="cstat-no" title="statement not covered" >            this.setState({currentData: response.data});</span>
+<span class="cstat-no" title="statement not covered" >            this.setState({ currentData: response.data });</span>
         }).catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
         })
     }
     changeColor() {
         var colors = [`#21CE99`, `#F45531`];
         var color = colors[Math.round(Math.random() * (1 - 0) + 0)];
-        this.setState({color: color})
+        this.setState({ color: color })
 &nbsp;
         if (color === `#21CE99`) {
-            this.setState({circleColor: `rgb(33, 206, 153, .1)`}) 
+            this.setState({ circleColor: `rgb(33, 206, 153, .1)`, priceTag: 'green' })
         } else {
-            this.setState({circleColor: `rgb(244, 85, 49, .1)`}) 
+            this.setState({ circleColor: `rgb(244, 85, 49, .1)`, priceTag: 'red' })
         }
     }
-    
+&nbsp;
 &nbsp;
     render() {
         return (
@@ -261,43 +266,44 @@ class Ratings extends React.Component {
                 &lt;RatingsStyle.RatingsTitle&gt;Analyst Ratings&lt;/RatingsStyle.RatingsTitle&gt;
                 &lt;RatingsStyle.LineBreak /&gt;
                 &lt;RatingsStyle.MainContainer&gt;
-                &lt;RatingsStyle.RatingCircle style={{background: this.state.circleColor}}&gt;
-                    &lt;RatingsStyle.CircleContent style={{fontSize:'26px', color: this.state.color}}&gt;{this.state.currentData.buyRating}
-                    &lt;div style={{fontSize:'13px'}}&gt; of 43 ratings&lt;/div&gt;&lt;/RatingsStyle.CircleContent&gt;
-                &lt;/RatingsStyle.RatingCircle&gt;
-                
-               &lt;RatingsStyle.ProgressBarContainer&gt;
-     
-               &lt;RatingsStyle.ProgressTitle style={{color: this.state.color, top: '140px'}}&gt;Buy&lt;/RatingsStyle.ProgressTitle&gt;
-               &lt;RatingsStyle.Meter id="buy-rating" style={{background: this.state.circleColor}}&gt;
-               &lt;RatingsStyle.MeterSpan style={{width: this.state.currentData.buyRating, background: this.state.color}}&gt;&lt;/RatingsStyle.MeterSpan&gt;
-               &lt;RatingsStyle.MeterLabel style={{color: this.state.color}}&gt;{this.state.currentData.buyRating}&lt;/RatingsStyle.MeterLabel&gt;
-               &lt;/RatingsStyle.Meter&gt;
-               
-               
-               &lt;RatingsStyle.ProgressTitle style={{color: 'white', top: '165px'}}&gt;Hold&lt;/RatingsStyle.ProgressTitle&gt;
-               &lt;RatingsStyle.Meter id="hold-rating" style={{background: 'black'}}&gt;
-               &lt;RatingsStyle.MeterSpan style={{width: this.state.currentData.HoldRating, background: 'white'}}&gt;&lt;/RatingsStyle.MeterSpan&gt;
-               &lt;RatingsStyle.MeterLabel style={{color: 'white'}}&gt;{this.state.currentData.holdRating}&lt;/RatingsStyle.MeterLabel&gt;
-               &lt;/RatingsStyle.Meter&gt;
-             
-               &lt;RatingsStyle.ProgressTitle style={{color: 'white', top: '190px'}}&gt;Sell&lt;/RatingsStyle.ProgressTitle&gt;
-               &lt;RatingsStyle.Meter id="sell-rating" style={{background: 'black'}}&gt;
-               &lt;RatingsStyle.MeterSpan style={{width: this.state.currentData.sellRating, background: 'white'}}&gt;&lt;/RatingsStyle.MeterSpan&gt;
-               &lt;RatingsStyle.MeterLabel style={{color: 'white'}}&gt;{this.state.currentData.sellRating}&lt;/RatingsStyle.MeterLabel&gt;
-               &lt;/RatingsStyle.Meter&gt;
+                    &lt;RatingsStyle.RatingCircle style={{ background: this.state.circleColor }}&gt;
+                        &lt;RatingsStyle.CircleContent style={{ fontSize: '26px', color: this.state.color }}&gt;
+                            &lt;img src={`${this.state.priceTag}-price.png`} style={{ background: this.state.color }}&gt;&lt;/img&gt; {this.state.currentData.buyRating}
+                            &lt;div style={{ fontSize: '13px' }}&gt; of 43 ratings&lt;/div&gt;&lt;/RatingsStyle.CircleContent&gt;
+                    &lt;/RatingsStyle.RatingCircle&gt;
 &nbsp;
-               &lt;RatingsStyle.ArticleContainer&gt;
-               &lt;BuySummary summary={this.state.currentData.buySummary} color={this.state.color} /&gt;
-               &lt;SellSummary summary={this.state.currentData.sellSummary} color={this.state.color}/&gt;
-               &lt;/RatingsStyle.ArticleContainer&gt;
-        
-               &lt;/RatingsStyle.ProgressBarContainer&gt;
+                    &lt;RatingsStyle.ProgressBarContainer&gt;
+&nbsp;
+                        &lt;RatingsStyle.ProgressTitle style={{ color: this.state.color, top: '140px' }}&gt;Buy&lt;/RatingsStyle.ProgressTitle&gt;
+                        &lt;RatingsStyle.Meter id="buy-rating" style={{ background: this.state.circleColor }}&gt;
+                            &lt;RatingsStyle.MeterSpan style={{ width: this.state.currentData.buyRating, background: this.state.color }}&gt;&lt;/RatingsStyle.MeterSpan&gt;
+                            &lt;RatingsStyle.MeterLabel style={{ color: this.state.color }}&gt;{this.state.currentData.buyRating}&lt;/RatingsStyle.MeterLabel&gt;
+                        &lt;/RatingsStyle.Meter&gt;
+&nbsp;
+&nbsp;
+                        &lt;RatingsStyle.ProgressTitle style={{ color: 'white', top: '165px' }}&gt;Hold&lt;/RatingsStyle.ProgressTitle&gt;
+                        &lt;RatingsStyle.Meter id="hold-rating" style={{ background: 'black' }}&gt;
+                            &lt;RatingsStyle.MeterSpan style={{ width: this.state.currentData.HoldRating, background: 'white' }}&gt;&lt;/RatingsStyle.MeterSpan&gt;
+                            &lt;RatingsStyle.MeterLabel style={{ color: 'white' }}&gt;{this.state.currentData.holdRating}&lt;/RatingsStyle.MeterLabel&gt;
+                        &lt;/RatingsStyle.Meter&gt;
+&nbsp;
+                        &lt;RatingsStyle.ProgressTitle style={{ color: 'white', top: '190px' }}&gt;Sell&lt;/RatingsStyle.ProgressTitle&gt;
+                        &lt;RatingsStyle.Meter id="sell-rating" style={{ background: 'black' }}&gt;
+                            &lt;RatingsStyle.MeterSpan style={{ width: this.state.currentData.sellRating, background: 'white' }}&gt;&lt;/RatingsStyle.MeterSpan&gt;
+                            &lt;RatingsStyle.MeterLabel style={{ color: 'white' }}&gt;{this.state.currentData.sellRating}&lt;/RatingsStyle.MeterLabel&gt;
+                        &lt;/RatingsStyle.Meter&gt;
+&nbsp;
+                        &lt;RatingsStyle.ArticleContainer&gt;
+                            &lt;BuySummary summary={this.state.currentData.buySummary} color={this.state.color} /&gt;
+                            &lt;SellSummary summary={this.state.currentData.sellSummary} color={this.state.color} /&gt;
+                        &lt;/RatingsStyle.ArticleContainer&gt;
+&nbsp;
+                    &lt;/RatingsStyle.ProgressBarContainer&gt;
 &nbsp;
 &nbsp;
                 &lt;/RatingsStyle.MainContainer&gt;
-               
-                
+&nbsp;
+&nbsp;
             &lt;/RatingsStyle.Wrapper&gt;
         )
     }
@@ -310,7 +316,7 @@ export default Ratings;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 07 2019 17:04:54 GMT-0800 (PST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 08 2019 11:37:02 GMT-0800 (PST)
 </div>
 </div>
 <script src="../prettify.js"></script>

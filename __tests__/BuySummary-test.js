@@ -18,32 +18,32 @@ describe('Buy Summary', () => {
     })
 
     it('should have a color prop passed down from parent', () => {
-      const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp}/>)
-      expect(wrapper.props().color).toBe("white");
+        const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp} />)
+        expect(wrapper.props().color).toBe("white");
     })
 
     it('should have a summary prop passed down from parent', () => {
-        const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp}/>)
+        const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp} />)
         expect(wrapper.props().summary).toBe(summaryProp);
-      })
+    })
 
-      it('should have readMore state set to true when Read More is clicked', () => {
-        const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp}/>);
+    it('should have readMore state set to true when Read More is clicked', () => {
+        const wrapper = mount(<BuySummary summary={summaryProp} color={colorProp} />);
         wrapper.setState({
-          readMore: false
+            readMore: false
         })
         wrapper.find(BuySummaryStyle.ReadMore).simulate('click');
         expect(wrapper.state().readMore).toBe(true);
     })
 
-      it('should render the rest of the summary when Read More is clicked', () => {
+    it('should render the rest of the summary when Read More is clicked', () => {
         const wrapper = mount(<BuySummary summary={summaryProp} />);
         wrapper.setState({
             readMore: false
-          })
-          var before = wrapper.find(BuySummaryStyle.RatingSummaryBody).html();
-          wrapper.find(BuySummaryStyle.ReadMore).simulate('click');
-          var after = wrapper.find(BuySummaryStyle.RatingSummaryBody).html();
-          expect(before === after).toBe(false);
+        })
+        var before = wrapper.find(BuySummaryStyle.RatingSummaryBody).html();
+        wrapper.find(BuySummaryStyle.ReadMore).simulate('click');
+        var after = wrapper.find(BuySummaryStyle.RatingSummaryBody).html();
+        expect(before === after).toBe(false);
     })
 })
