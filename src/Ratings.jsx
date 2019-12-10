@@ -4,7 +4,6 @@ import RatingsStyle from './styled-components/Ratings-style'
 import BuySummary from './BuySummary.jsx';
 import SellSummary from './SellSummary.jsx';
 
-
 class Ratings extends React.Component {
     constructor() {
         super();
@@ -48,7 +47,7 @@ class Ratings extends React.Component {
                 <RatingsStyle.MainContainer>
                     <RatingsStyle.RatingCircle style={{ background: this.state.circleColor }}>
                         <RatingsStyle.CircleContent style={{ fontSize: '26px', color: this.state.color }}>
-                            <img src={`${this.state.priceTag}-price.png`} style={{ background: this.state.color }}></img> {this.state.currentData.buyRating}
+                            <img src={`img/${this.state.priceTag}-price.png`} style={{ background: this.state.color }}></img> {this.state.currentData.buyRating}
                             <div style={{ fontSize: '13px' }}> of 43 ratings</div></RatingsStyle.CircleContent>
                     </RatingsStyle.RatingCircle>
 
