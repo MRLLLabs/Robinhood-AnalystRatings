@@ -12,7 +12,6 @@ height: auto
 `;
 
 RatingsStyle.RatingsTitle = styled.div`
-float: left;
 color: #ffffff;
 font-family: 'DINPro-Medium';
 font-size: 24px;
@@ -29,7 +28,7 @@ padding: 0;
 `;
 
 RatingsStyle.MainContainer = styled.div`
-display: table;
+
 background-color: #1B1B1D;
 width: 100%;
 height: auto;
@@ -54,17 +53,14 @@ margin: 0;
 `;
 
 RatingsStyle.ProgressBarContainer = styled.div`
-display: table;
-float: right;
-margin-right: 500px;
+float: left;
+margin-left: 100px;
 height: auto;
 width: 430px;
 background-color: #1B1B1D;
 `;
 
 RatingsStyle.ProgressTitle = styled.div`
-position: absolute;
-left: 365px;
 font-family: 'DINPro-Medium';
 font-size: 13px;
 `;
