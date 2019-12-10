@@ -4,6 +4,6 @@ import Ratings from './Ratings.jsx';
 
 ReactDOM.render(
     <Ratings/>,
-    document.getElementById('root')
+    document.getElementById('Ratings')
   );
   
