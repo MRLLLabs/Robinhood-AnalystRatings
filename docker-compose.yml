@@ -1,0 +1,11 @@
+version: "3"
+services:
+  database:
+    image: mongo
+  mongo-seed:
+    build: .
+    command: npm run db:setup
+  webserver:
+    build: .
+    ports:
+      - "3005:3005"
