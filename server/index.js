@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/ratings/getData/:id', (req, res) => {
-    var id = req.params.id;
+app.get('/ratings/getData', (req, res) => {
+    let id = req.query.id ? req.query.id : '1';
     Rating.findOne({id: id}, (err, response) => {
         if (err) {
             console.log (err);

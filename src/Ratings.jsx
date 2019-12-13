@@ -17,7 +17,7 @@ class Ratings extends React.Component {
 
     componentDidMount() {
         this.changeColor();
-        axios.get('/ratings/getData/1').then((response) => {
+        axios.get(`/ratings/getData${window.location.search}`).then((response) => {
             this.setState({ currentData: response.data });
             var collapseBuy = document.getElementById("buy-collapse");
             collapseBuy.style.maxHeight = '0px';
