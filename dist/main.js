@@ -58,11 +58,11 @@ e.exports=function(e){return null!=e&&null!=e.constructor&&"function"==typeof e.
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */Object.defineProperty(t,"__esModule",{value:!0});var r="function"==typeof Symbol&&Symbol.for,o=r?Symbol.for("react.element"):60103,a=r?Symbol.for("react.portal"):60106,i=r?Symbol.for("react.fragment"):60107,l=r?Symbol.for("react.strict_mode"):60108,u=r?Symbol.for("react.profiler"):60114,c=r?Symbol.for("react.provider"):60109,s=r?Symbol.for("react.context"):60110,f=r?Symbol.for("react.async_mode"):60111,d=r?Symbol.for("react.concurrent_mode"):60111,p=r?Symbol.for("react.forward_ref"):60112,h=r?Symbol.for("react.suspense"):60113,m=r?Symbol.for("react.suspense_list"):60120,y=r?Symbol.for("react.memo"):60115,g=r?Symbol.for("react.lazy"):60116,v=r?Symbol.for("react.fundamental"):60117,b=r?Symbol.for("react.responder"):60118,w=r?Symbol.for("react.scope"):60119;function k(e){if("object"==typeof e&&null!==e){var t=e.$$typeof;switch(t){case o:switch(e=e.type){case f:case d:case i:case u:case l:case h:return e;default:switch(e=e&&e.$$typeof){case s:case p:case g:case y:case c:return e;default:return t}}case a:return t}}}function x(e){return k(e)===d}t.typeOf=k,t.AsyncMode=f,t.ConcurrentMode=d,t.ContextConsumer=s,t.ContextProvider=c,t.Element=o,t.ForwardRef=p,t.Fragment=i,t.Lazy=g,t.Memo=y,t.Portal=a,t.Profiler=u,t.StrictMode=l,t.Suspense=h,t.isValidElementType=function(e){return"string"==typeof e||"function"==typeof e||e===i||e===d||e===u||e===l||e===h||e===m||"object"==typeof e&&null!==e&&(e.$$typeof===g||e.$$typeof===y||e.$$typeof===c||e.$$typeof===s||e.$$typeof===p||e.$$typeof===v||e.$$typeof===b||e.$$typeof===w)},t.isAsyncMode=function(e){return x(e)||k(e)===f},t.isConcurrentMode=x,t.isContextConsumer=function(e){return k(e)===s},t.isContextProvider=function(e){return k(e)===c},t.isElement=function(e){return"object"==typeof e&&null!==e&&e.$$typeof===o},t.isForwardRef=function(e){return k(e)===p},t.isFragment=function(e){return k(e)===i},t.isLazy=function(e){return k(e)===g},t.isMemo=function(e){return k(e)===y},t.isPortal=function(e){return k(e)===a},t.isProfiler=function(e){return k(e)===u},t.isStrictMode=function(e){return k(e)===l},t.isSuspense=function(e){return k(e)===h}},function(e,t,n){e.exports=n(45)()},function(e,t,n){"use strict";var r=n(46);function o(){}function a(){}a.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,a,i){if(i!==r){var l=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw l.name="Invariant Violation",l}}function t(){return e}e.isRequired=e;var n={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:a,resetWarningCache:o};return n.PropTypes=n,n}},function(e,t,n){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,n){"use strict";n.r(t);var r=n(0),o=n.n(r),a=n(16),i=n.n(a),l=n(17),u=n.n(l),c=n(1);const s={};s.Wrapper=c.a.div`
-padding: 4em;
+padding: 36px;
+width: 676px;
 padding-bottom: 6em;
 background: #1B1B1D;
 display: grid;
-width: 100%;
 height: auto
 `,s.RatingsTitle=c.a.div`
 color: #ffffff;
@@ -79,10 +79,10 @@ padding: 0;
 `,s.MainContainer=c.a.div`
 
 background-color: #1B1B1D;
-width: 100%;
+width: 676px;
 height: auto;
 `,s.RatingCircle=c.a.div`
-margin-left: 60px;
+margin-left: 30px;
 margin-right: 20px;
 display: table;
 float: left;
@@ -97,7 +97,7 @@ font-family: 'DINPro-Medium';
 margin: 0;
 `,s.ProgressBarContainer=c.a.div`
 float: left;
-margin-left: 100px;
+margin-left: 60px;
 height: auto;
 width: 430px;
 background-color: #1B1B1D;

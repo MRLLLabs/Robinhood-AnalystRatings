@@ -3,11 +3,11 @@ import styled from 'styled-components'
 const RatingsStyle = {};
 
 RatingsStyle.Wrapper = styled.div`
-padding: 4em;
+padding: 36px;
+width: 676px;
 padding-bottom: 6em;
 background: #1B1B1D;
 display: grid;
-width: 100%;
 height: auto
 `;
 
@@ -30,12 +30,12 @@ padding: 0;
 RatingsStyle.MainContainer = styled.div`
 
 background-color: #1B1B1D;
-width: 100%;
+width: 676px;
 height: auto;
 `;
 
 RatingsStyle.RatingCircle = styled.div`
-margin-left: 60px;
+margin-left: 30px;
 margin-right: 20px;
 display: table;
 float: left;
@@ -54,7 +54,7 @@ margin: 0;
 
 RatingsStyle.ProgressBarContainer = styled.div`
 float: left;
-margin-left: 100px;
+margin-left: 60px;
 height: auto;
 width: 430px;
 background-color: #1B1B1D;
