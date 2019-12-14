@@ -5,7 +5,17 @@
       <link rel="stylesheet" type="text/css" href="regfont/stylesheet.css">
     <title>Anaylst Ratings</title>
   </head>
-  <body style="background-color: #1b1b1d">
+  <body id="body">
+      <script>function marketOpen() {
+          const d = new Date();
+          const totalMinutes = (d.getHours() * 60) + d.getMinutes();
+          const colors = {};
+          if (totalMinutes < 360 || totalMinutes >= 900) {
+            document.getElementById('body').style.background = "#1B1B1D"
+          } else {
+            document.getElementById('body').style.background = "white"
+          }
+        }</script>
     <div id="Ratings"></div>
     <script src="main.js"></script>
   </body>
