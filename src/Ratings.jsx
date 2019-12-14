@@ -13,9 +13,13 @@ class Ratings extends React.Component {
             circleColor: 'white',
             priceTag: ''
         }
+
+        this.colors = {};
     }
 
     componentDidMount() {
+        var colors = this.marketOpen();
+        this.colors = colors; 
         this.changeColor();
         axios.get(`/ratings/getData${window.location.search}`).then((response) => {
             this.setState({ currentData: response.data });
@@ -31,27 +35,56 @@ class Ratings extends React.Component {
         var color = colors[Math.round(Math.random() * (1 - 0) + 0)];
         this.setState({ color: color })
 
-        if (color === `#21CE99`) {
-            this.setState({ circleColor: `rgb(33, 206, 153, .1)`, priceTag: 'green' })
-        } else {
-            this.setState({ circleColor: `rgb(244, 85, 49, .1)`, priceTag: 'red' })
+        if (color === `#21CE99` && this.colors.fontColor === 'white') {
+            this.setState({ circleColor: `rgb(33, 206, 153, .1)`, priceTag: 'black-green' })
+        } else if (color === `#21CE99` && this.colors.fontColor !== 'white') {
+                this.setState({ circleColor: `rgb(33, 206, 153, .1)`, priceTag:'white-green'  })
+        } else if (color === `#F45531` && this.colors.fontColor === 'white') {
+            this.setState({ circleColor: `rgb(244, 85, 49, .1)`, priceTag: 'black-red' })
+        }
+         else {
+            this.setState({ circleColor: `rgb(244, 85, 49, .1)`, priceTag: 'white-red' })
         }
     }
+
+    marketOpen() {
+        const d = new Date();
+        const totalMinutes = (d.getHours() * 60) + d.getMinutes();
+        const colors = {};
+        if (totalMinutes < 360 || totalMinutes >= 900) {
+          colors.fontColor = 'white';
+          colors.background = '#1B1A1D';
+          colors.speechBubble = 'rgb(0,0,0, .3)';
+          colors.meter = 'white';
+          colors.lineBreak = 'black';
+          colors.source = '#8c8c8e';
+           
+        } else {
+          colors.fontColor = '#171718';
+          colors.background = 'white';
+          colors.speechBubble = 'rgb(237, 237, 237, .5)';
+          colors.meter = 'black';
+          colors.lineBreak =  'rgb(237, 237, 237, .5)';
+          colors.source = '#c7c7c7';
+          
+        }
+        return colors;
+      }
 
 
     render() {
         return (
-            <RatingsStyle.Wrapper>
-                <RatingsStyle.RatingsTitle>Analyst Ratings</RatingsStyle.RatingsTitle>
-                <RatingsStyle.LineBreak />
-                <RatingsStyle.MainContainer>
+            <RatingsStyle.Wrapper style={{background: this.colors.background}}>
+                <RatingsStyle.RatingsTitle style={{color: this.colors.fontColor}}>Analyst Ratings</RatingsStyle.RatingsTitle>
+                <RatingsStyle.LineBreak style={{borderTop: `1px solid ${this.colors.lineBreak}`}} />
+                <RatingsStyle.MainContainer style={{background: this.colors.background}}>
                     <RatingsStyle.RatingCircle style={{ background: this.state.circleColor }}>
                         <RatingsStyle.CircleContent style={{ fontSize: '26px', color: this.state.color }}>
                             <img src={`Ratings/${this.state.priceTag}-price.png`} style={{ background: this.state.color }}></img> {this.state.currentData.buyRating}
                             <div style={{ fontSize: '13px' }}> of 43 ratings</div></RatingsStyle.CircleContent>
                     </RatingsStyle.RatingCircle>
 
-                    <RatingsStyle.ProgressBarContainer>
+                    <RatingsStyle.ProgressBarContainer style={{background: this.colors.background}}>
 
                         <RatingsStyle.ProgressTitle style={{ color: this.state.color }}>Buy</RatingsStyle.ProgressTitle>
                         <RatingsStyle.Meter id="buy-rating" style={{ background: this.state.circleColor }}>
@@ -60,21 +93,21 @@ class Ratings extends React.Component {
                         </RatingsStyle.Meter>
 
 
-                        <RatingsStyle.ProgressTitle style={{ color: 'white' }}>Hold</RatingsStyle.ProgressTitle>
-                        <RatingsStyle.Meter id="hold-rating" style={{ background: 'black' }}>
-                            <RatingsStyle.MeterSpan style={{ width: this.state.currentData.holdRating, background: 'white' }}></RatingsStyle.MeterSpan>
-                            <RatingsStyle.MeterLabel style={{ color: 'white' }}>{this.state.currentData.holdRating}</RatingsStyle.MeterLabel>
+                        <RatingsStyle.ProgressTitle style={{ color: this.colors.fontColor }}>Hold</RatingsStyle.ProgressTitle>
+                        <RatingsStyle.Meter id="hold-rating" style={{ background: this.colors.speechBubble }}>
+                            <RatingsStyle.MeterSpan style={{ width: this.state.currentData.holdRating, background: this.colors.meter }}></RatingsStyle.MeterSpan>
+                            <RatingsStyle.MeterLabel style={{ color: this.colors.fontColor }}>{this.state.currentData.holdRating}</RatingsStyle.MeterLabel>
                         </RatingsStyle.Meter>
 
-                        <RatingsStyle.ProgressTitle style={{ color: 'white' }}>Sell</RatingsStyle.ProgressTitle>
-                        <RatingsStyle.Meter id="sell-rating" style={{ background: 'black' }}>
-                            <RatingsStyle.MeterSpan style={{ width: this.state.currentData.sellRating, background: 'white' }}></RatingsStyle.MeterSpan>
-                            <RatingsStyle.MeterLabel style={{ color: 'white' }}>{this.state.currentData.sellRating}</RatingsStyle.MeterLabel>
+                        <RatingsStyle.ProgressTitle style={{ color: this.colors.fontColor }}>Sell</RatingsStyle.ProgressTitle>
+                        <RatingsStyle.Meter id="sell-rating" style={{ background: this.colors.speechBubble }}>
+                            <RatingsStyle.MeterSpan style={{ width: this.state.currentData.sellRating, background: this.colors.meter }}></RatingsStyle.MeterSpan>
+                            <RatingsStyle.MeterLabel style={{ color: this.colors.fontColor }}>{this.state.currentData.sellRating}</RatingsStyle.MeterLabel>
                         </RatingsStyle.Meter>
 
-                        <RatingsStyle.ArticleContainer>
-                            <BuySummary summary={this.state.currentData.buySummary} color={this.state.color} />
-                            <SellSummary summary={this.state.currentData.sellSummary} color={this.state.color} />
+                        <RatingsStyle.ArticleContainer style={{background: this.colors.background}}>
+                            <BuySummary summary={this.state.currentData.buySummary} color={this.state.color} theme={this.colors} />
+                            <SellSummary summary={this.state.currentData.sellSummary} color={this.state.color} theme={this.colors} />
                         </RatingsStyle.ArticleContainer>
 
                     </RatingsStyle.ProgressBarContainer>

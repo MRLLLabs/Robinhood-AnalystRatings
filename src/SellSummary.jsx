@@ -39,16 +39,16 @@ class SellSummary extends React.Component {
 
             return (
                 <div>
-                    <SellSummaryStyle.RatingSummaryBody>
+                    <SellSummaryStyle.RatingSummaryBody style={{color: this.props.theme.fontColor}}>
                         "{info}
                     </SellSummaryStyle.RatingSummaryBody>
-                    <SellSummaryStyle.RatingSummaryHiddenBody id="sell-collapse">
+                    <SellSummaryStyle.RatingSummaryHiddenBody id="sell-collapse" style={{color: this.props.theme.fontColor}}>
                         <br /> {hiddenInfo}"
                     </SellSummaryStyle.RatingSummaryHiddenBody>
                     <SellSummaryStyle.ReadMore onClick={this.readClicked} onMouseOver={this.pointer} style={{ color: this.props.color }}>
                         Read More
                     </SellSummaryStyle.ReadMore>
-                    <SellSummaryStyle.Source>Morningstar</SellSummaryStyle.Source>
+                    <SellSummaryStyle.Source style={{color: this.props.theme.source}}>Morningstar</SellSummaryStyle.Source>
                 </div>
 
             )
@@ -64,12 +64,12 @@ class SellSummary extends React.Component {
     render() {
         return (
             <div>
-                <SellSummaryStyle.SellSpeechBubble>
-                    <SellSummaryStyle.RatingSummaryTitle>
+                <SellSummaryStyle.SellSpeechBubble style={{backgroundColor: this.props.theme.speechBubble}}>
+                    <SellSummaryStyle.RatingSummaryTitle style={{color: this.props.theme.fontColor}}>
                         Sell Summary
           </SellSummaryStyle.RatingSummaryTitle>
                     {this.read()}
-                    <SellSummaryStyle.SpeechBubbleArrow />
+                    <SellSummaryStyle.SpeechBubbleArrow style={{borderColor: `${this.props.theme.speechBubble} transparent transparent ${this.props.theme.speechBubble}`}}/>
                 </SellSummaryStyle.SellSpeechBubble>
             </div>
         )

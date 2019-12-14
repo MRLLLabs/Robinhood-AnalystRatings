@@ -6,13 +6,11 @@ RatingsStyle.Wrapper = styled.div`
 padding: 36px;
 width: 676px;
 padding-bottom: 6em;
-background: #1B1B1D;
 display: grid;
 height: auto
 `;
 
 RatingsStyle.RatingsTitle = styled.div`
-color: #ffffff;
 font-family: 'DINPro-Medium';
 font-size: 24px;
 `;
@@ -21,15 +19,12 @@ RatingsStyle.LineBreak = styled.hr`
 display: block;
 height: 1px;
 border: 0;
-border-top: 1px solid black;
 margin: 1em 0;
 margin-bottom: 25px;
 padding: 0;
 `;
 
 RatingsStyle.MainContainer = styled.div`
-
-background-color: #1B1B1D;
 width: 676px;
 height: auto;
 `;
@@ -57,7 +52,6 @@ float: left;
 margin-left: 60px;
 height: auto;
 width: 430px;
-background-color: #1B1B1D;
 `;
 
 RatingsStyle.ProgressTitle = styled.div`
@@ -101,7 +95,6 @@ RatingsStyle.ArticleContainer = styled.div`
 float: right;
 height: 300px;
 width: 100%;
-background: #1B1B1D;
 `;
 
 export default RatingsStyle;
