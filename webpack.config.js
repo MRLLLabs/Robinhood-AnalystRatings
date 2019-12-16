@@ -1,4 +1,6 @@
 const path = require('path');
+var webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: ['./src/index.jsx'],
@@ -19,5 +21,16 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.AggressiveMergingPlugin()
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
 };

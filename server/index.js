@@ -4,11 +4,13 @@ const port = 3005
 const path = require('path');
 const bodyParser = require('body-parser');
 const Rating = require('../database/Rating.js');
+const compression = require('compression');
 const cors = require('cors');
 
 app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ratings/getData', (req, res) => {
