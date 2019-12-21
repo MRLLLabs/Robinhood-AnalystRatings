@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --collectCoverage",
     "build": "npx webpack --watch --mode=production",
-    "start": "npx nodemon ./server/index.js",
+    "start": "node ./server/index.js",
+    "start:dev": "nodemon -r dotenv/config ./server/index.js",
     "db:setup": "node database/seed.js"
   },
   "keywords": [],
@@ -21,6 +22,7 @@
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "compression-webpack-plugin": "^3.0.1",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
