@@ -4,7 +4,12 @@ const fs = require('fs');
 const path = require('path');
 
 const stocks = [];
-const tickers = Combinatorics.baseN(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], 6)
+const tickers = Combinatorics.baseN(
+  [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N',
+    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+  ], 5,
+)
   .toArray()
   .map((cmb) => cmb.join(''));
 
