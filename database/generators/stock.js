@@ -14,12 +14,21 @@ const tickers = Combinatorics.baseN(
   .map((cmb) => cmb.join(''));
 
 for (let i = 0; i < 1e7; i += 1) {
+  const randomBuyRatingPercentage = Math.random();
+  const randomSellRatingPercentage = Math.random() * (1 - randomBuyRatingPercentage);
+  const randomHoldRatingPercentage = 1 - (randomBuyRatingPercentage + randomSellRatingPercentage);
+
+  const roundOffTwoDecimals = (number) => Math.round(number * 100) / 100;
+
   const stock = {
     symbol: tickers[i],
     company: faker.company.companyName(),
     description: faker.lorem.paragraph(),
     sellSummary: faker.lorem.paragraph(2),
     buySummary: faker.lorem.paragraph(2),
+    buyRating: roundOffTwoDecimals(randomBuyRatingPercentage),
+    sellRating: roundOffTwoDecimals(randomSellRatingPercentage),
+    holdRating: roundOffTwoDecimals(randomHoldRatingPercentage),
   };
 
   stocks.push(stock);
