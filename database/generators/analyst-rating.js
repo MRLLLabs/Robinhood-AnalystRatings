@@ -2,6 +2,7 @@ const faker = require('faker');
 const Combinatorics = require('js-combinatorics');
 const fs = require('fs');
 const path = require('path');
+const moment = require('moment');
 
 const getRandomIdxInclusive = (n, x) => {
   const min = Math.ceil(n);
@@ -15,10 +16,8 @@ const tickers = Combinatorics.baseN(
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
   ], 5,
 )
-  .toArray()
   .map((cmb) => cmb.join(''));
 
-console.log(tickers.length);
 const ratings = [null, 'buy', 'hold', 'sell'];
 const analystsRatings = [];
 
@@ -32,7 +31,7 @@ for (let i = 1; i <= 1e8; i += 1) {
     analyst_id: analyst,
     stock_symbol: tickers[randomTickerIdx],
     rating: ratings[randomRatingsIdx],
-    rating_date: faker.date.recent(365),
+    rating_date: moment(faker.date.recent(365)).format('YYYY-MM-DD'),
   };
 
   analystsRatings.push(analystRating);
