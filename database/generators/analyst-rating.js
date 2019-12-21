@@ -21,9 +21,9 @@ const tickers = Combinatorics.baseN(
 console.log(tickers.length);
 const ratings = [null, 'buy', 'hold', 'sell'];
 const analystsRatings = [];
-/* 
-for (let i = 0; i < 1e8; i += 1) {
-  const analyst = getRandomIdxInclusive(0, 50);
+
+for (let i = 1; i <= 1e8; i += 1) {
+  const analyst = getRandomIdxInclusive(0, 1e6);
   const tickersLength = tickers.length - 1;
   const randomTickerIdx = getRandomIdxInclusive(0, tickersLength);
   const randomRatingsIdx = getRandomIdxInclusive(0, 3);
@@ -37,7 +37,7 @@ for (let i = 0; i < 1e8; i += 1) {
 
   analystsRatings.push(analystRating);
 }
- */
+
 fs.writeFile(path.resolve(__dirname, '..', 'analysts-ratings.json'),
   JSON.stringify(analystsRatings),
   (err) => console.log(err));

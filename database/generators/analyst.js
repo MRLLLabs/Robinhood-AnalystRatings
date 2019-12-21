@@ -4,7 +4,7 @@ const path = require('path');
 
 const analysts = [];
 
-for (let i = 0; i < 50; i += 1) {
+for (let i = 1; i <= 1e6; i += 1) {
   const analyst = {
     id: i,
     fullName: faker.name.findName(),
