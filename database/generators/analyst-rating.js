@@ -16,7 +16,11 @@ const tickers = Combinatorics.baseN(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
 const ratings = [null, 'buy', 'hold', 'sell'];
 const analystsRatings = [];
 
+<<<<<<< HEAD
 for (var i = 0; i < 1e8; i += 1) {
+=======
+for (var i = 0; i < 5; i += 1) {
+>>>>>>> bc32f71024dc19d97fbdff1f5ee1d3e13f7451d6
   const analyst = getRandomIdxInclusive(0, 50);
   const tickersLength = tickers.length - 1;
   const randomTickerIdx = getRandomIdxInclusive(0, tickersLength);
