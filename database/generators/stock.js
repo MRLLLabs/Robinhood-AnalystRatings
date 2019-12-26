@@ -3,22 +3,47 @@ const Combinatorics = require('js-combinatorics');
 const fs = require('fs');
 const path = require('path');
 
-const stocks = [];
 const tickers = Combinatorics.baseN(
   [
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N',
-    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-  ], 5,
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ],
+  5
 )
   .toArray()
-  .map((cmb) => cmb.join(''));
+  .map(cmb => cmb.join(''));
 
 for (let i = 0; i < 1e7; i += 1) {
   const randomBuyRatingPercentage = Math.random();
-  const randomSellRatingPercentage = Math.random() * (1 - randomBuyRatingPercentage);
-  const randomHoldRatingPercentage = 1 - (randomBuyRatingPercentage + randomSellRatingPercentage);
+  const randomSellRatingPercentage =
+    Math.random() * (1 - randomBuyRatingPercentage);
+  const randomHoldRatingPercentage =
+    1 - (randomBuyRatingPercentage + randomSellRatingPercentage);
 
-  const roundOffTwoDecimals = (number) => Math.round(number * 100) / 100;
+  const roundOffTwoDecimals = number => Math.round(number * 100) / 100;
 
   const stock = {
     symbol: tickers[i],
@@ -31,9 +56,13 @@ for (let i = 0; i < 1e7; i += 1) {
     holdRating: roundOffTwoDecimals(randomHoldRatingPercentage),
   };
 
-  stocks.push(stock);
-}
+  fs.appendFileSync(
+    path.resolve(__dirname, '..', 'stocks.json'),
+    `${JSON.stringify(stock)}\n`,
+    err => console.log(err)
+  );
 
-fs.writeFile(path.resolve(__dirname, '..', 'stocks.json'),
-  JSON.stringify(stocks),
-  (err) => console.log(err));
+  if (i % 5000 === 0) {
+    console.log(i);
+  }
+}

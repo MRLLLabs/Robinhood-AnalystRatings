@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
 
-const analysts = [];
+let analysts = '';
 
 for (let i = 1; i <= 1e6; i += 1) {
   const analyst = {
@@ -10,9 +10,9 @@ for (let i = 1; i <= 1e6; i += 1) {
     fullName: faker.name.findName(),
   };
 
-  analysts.push(analyst);
+  analysts += `${JSON.stringify(analyst)}\n`;
 }
 
-fs.writeFile(path.resolve(__dirname, '..', 'analysts.json'),
-  JSON.stringify(analysts),
-  (err) => console.log(err));
+fs.writeFile(path.resolve(__dirname, '..', 'analysts.json'), analysts, err =>
+  console.log(err)
+);
