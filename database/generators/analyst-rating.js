@@ -9,7 +9,7 @@ const getRandomIdxInclusive = (n, x) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const ratings = [null, 'buy', 'hold', 'sell'];
+const ratings = ['buy', 'hold', 'sell'];
 const analystsRatingsFields = 'id,analyst_id,stock_id,rating,rating_date\n';
 
 fs.writeFileSync(
@@ -25,7 +25,7 @@ while (i) {
   const id = i;
   const randomAnalystId = getRandomIdxInclusive(1, 1e6);
   const randomStockId = getRandomIdxInclusive(17920338, 27920337);
-  const randomRating = ratings[getRandomIdxInclusive(0, 3)];
+  const randomRating = ratings[getRandomIdxInclusive(0, 2)];
   const randomRatingDate = moment(
     dates[getRandomIdxInclusive(0, datesCount)]
   ).format('YYYY-MM-DD');
