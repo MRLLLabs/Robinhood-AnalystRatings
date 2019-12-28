@@ -10,14 +10,6 @@ const getRandomIdxInclusive = (n, x) => {
 };
 
 const ratings = ['buy', 'hold', 'sell'];
-const analystsRatingsFields = 'id,analyst_id,stock_id,rating,rating_date\n';
-
-fs.writeFileSync(
-  path.resolve(__dirname, '..', 'analysts-ratings.csv'),
-  analystsRatingsFields,
-  err => console.log(err)
-);
-
 const datesCount = dates.length;
 
 let i = 1e8;
