@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 const Rating = require('../database/Rating.js');
+const riak = require('../database/riak/');
 
 app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use(cors());
