@@ -2,6 +2,7 @@ version: "2"
 services:
   coordinator:
     image: basho/riak-kv
+    restart: unless-stopped
     ports:
       - "8087"
       - "8098"
@@ -14,6 +15,7 @@ services:
     network_mode: bridge
   member:
     image: basho/riak-kv
+    restart: unless-stopped
     ports:
       - "8087"
       - "8098"
