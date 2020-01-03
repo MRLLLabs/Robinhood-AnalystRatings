@@ -111,3 +111,5 @@ node_modules/
 .eslintrc.json
 
 TODO.*
+
+sample_data/

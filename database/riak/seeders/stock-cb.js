@@ -31,7 +31,7 @@ const client = new Riak.Client(nodes, (err, c) => {
       logger.info('client.ping has resulted in a success!');
     }
 
-    const q = async.queue((stock, callback) => {
+    const q = (stock, callback) => {
       const mapOp = new Riak.Commands.CRDT.UpdateMap.MapOperation();
       mapOp
         .setRegister('company', Buffer.from(stock.company))
@@ -56,7 +56,7 @@ const client = new Riak.Client(nodes, (err, c) => {
           callback();
         }
       });
-    }, 40);
+    };
 
     fs.createReadStream(
       path.resolve(__dirname, '../../sample_data/stocks.json'),
@@ -64,6 +64,18 @@ const client = new Riak.Client(nodes, (err, c) => {
         flags: 'r',
       }
     )
+      .pipe(es.split())
+      .pipe(es.parse())
+      .pipe(
+        es.mapSync(stock => {
+          q(stock, e => {
+            if (e) {
+              logger.error(e);
+            }
+            logger.info(`finished processing ${stock.symbol}`);
+          });
+        })
+      )
       .on('finish', () => {
         logger.info('Stream write to db has successfully completed!');
         client.stop(e => {
@@ -73,18 +85,6 @@ const client = new Riak.Client(nodes, (err, c) => {
             console.log('Client connection closed');
           }
         });
-      })
-      .pipe(es.split())
-      .pipe(es.parse())
-      .pipe(
-        es.map(stock => {
-          q.push(stock, e => {
-            if (e) {
-              logger.error(e);
-            }
-            logger.info(`finished processing ${stock.symbol}`);
-          });
-        })
-      );
+      });
   });
 });
