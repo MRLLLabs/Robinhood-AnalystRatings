@@ -59,6 +59,7 @@
     "js-combinatorics": "^0.5.4",
     "moment": "^2.24.0",
     "mongoose": "^5.7.13",
+    "newrelic": "^6.2.0",
     "nodemon": "^2.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
