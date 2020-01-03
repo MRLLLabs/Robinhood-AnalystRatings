@@ -32,24 +32,13 @@ const client = new Riak.Client(nodes, (err, c) => {
     }
 
     const q = (stock, callback) => {
-      const mapOp = new Riak.Commands.CRDT.UpdateMap.MapOperation();
-      mapOp
-        .setRegister('company', Buffer.from(stock.company))
-        .setRegister('description', Buffer.from(stock.description))
-        .setRegister('sellSummary', Buffer.from(stock.sellSummary))
-        .setRegister('buySummary', Buffer.from(stock.buySummary))
-        .setRegister('buyRating', Buffer.from(stock.buyRating.toString()))
-        .setRegister('sellRating', Buffer.from(stock.sellRating.toString()))
-        .setRegister('holdRating', Buffer.from(stock.holdRating.toString()));
-
       const options = {
-        bucketType: 'map',
         bucket: 'stocks',
         key: stock.symbol.toString(),
-        op: mapOp,
+        value: stock,
       };
 
-      client.updateMap(options, e => {
+      client.storeValue(options, e => {
         if (e) {
           logger.error(e);
         } else {
@@ -64,6 +53,21 @@ const client = new Riak.Client(nodes, (err, c) => {
         flags: 'r',
       }
     )
+      .on('error', e => {
+        if (e) {
+          logger.error(e);
+        }
+      })
+      .on('finish', () => {
+        logger.info('Stream write to db has successfully completed!');
+        client.stop(e => {
+          if (e) {
+            logger.error(e);
+          } else {
+            console.log('Client connection closed');
+          }
+        });
+      })
       .pipe(es.split())
       .pipe(es.parse())
       .pipe(
@@ -75,16 +79,6 @@ const client = new Riak.Client(nodes, (err, c) => {
             logger.info(`finished processing ${stock.symbol}`);
           });
         })
-      )
-      .on('finish', () => {
-        logger.info('Stream write to db has successfully completed!');
-        client.stop(e => {
-          if (e) {
-            logger.error(e);
-          } else {
-            console.log('Client connection closed');
-          }
-        });
-      });
+      );
   });
 });
