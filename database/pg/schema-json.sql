@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS robinhood_db_test;
-CREATE DATABASE robinhood_db_test;
+DROP DATABASE IF EXISTS robinhood_db;
+CREATE DATABASE robinhood_db;
 
-\c robinhood_db_test;
+\c robinhood_db;
 
 DROP TABLE IF EXISTS analysts;
 CREATE TABLE "analysts" (

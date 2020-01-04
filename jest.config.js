@@ -1,3 +1,4 @@
 module.exports = {
-    preset: '@shelf/jest-mongodb',
-  };
+  // Uncomment to enable MongoDB tests
+  // preset: '@shelf/jest-mongodb',
+};
