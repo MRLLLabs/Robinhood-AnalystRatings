@@ -1,0 +1,26 @@
+config:
+  target: 'http://localhost:3005'
+  phases:
+    - duration: 60
+      arrivalRate: 600
+  processor: './lib/index.js'
+scenarios:
+  - name: 'Get Analyst Rating Summary'
+    flow:
+      - function: 'generateTickerSymbol'
+      - get:
+          url: '/ratings/getData?stock={{ symbol }}'
+  - name: 'Add Analyst Rating Summary'
+    flow:
+      - function: 'generateRatingSummary'
+      - post:
+          url: '/ratings/getData'
+          json:
+            symbol: {{ symbol }}
+            company: {{ company }}
+            description: {{ description }}
+            sellSummary: {{ sellSummary }}
+            buySummary: {{ buySummary }}
+            buyRating: {{ buyRating }}
+            sellRating: {{ sellRating }}
+            holdRating: {{ holdRating }}
