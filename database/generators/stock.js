@@ -36,7 +36,7 @@ const tickers = Combinatorics.baseN(
   .toArray()
   .map(cmb => cmb.join(''));
 
-for (let i = 0; i < 1e7; i += 1) {
+for (let i = 0; i < 1; i += 1) {
   const randomBuyRatingPercentage = Math.random();
   const randomSellRatingPercentage =
     Math.random() * (1 - randomBuyRatingPercentage);
@@ -49,18 +49,20 @@ for (let i = 0; i < 1e7; i += 1) {
     symbol: tickers[i],
     company: faker.company.companyName(),
     description: faker.lorem.paragraph(),
-    sellSummary: faker.lorem.paragraph(2),
-    buySummary: faker.lorem.paragraph(2),
+    sellSummary: faker.lorem.paragraph(1),
+    buySummary: faker.lorem.paragraph(1),
     buyRating: roundOffTwoDecimals(randomBuyRatingPercentage),
     sellRating: roundOffTwoDecimals(randomSellRatingPercentage),
     holdRating: roundOffTwoDecimals(randomHoldRatingPercentage),
   };
 
-  fs.appendFileSync(
-    path.resolve(__dirname, '..', 'stocks.json'),
-    `${JSON.stringify(stock)}\n`,
-    err => console.log(err)
-  );
+  console.log(JSON.stringify(stock));
+
+  // fs.appendFileSync(
+  //   path.resolve(__dirname, '..', 'stocks.json'),
+  //   `${JSON.stringify(stock)}\n`,
+  //   err => console.log(err)
+  // );
 
   if (i % 5000 === 0) {
     console.log(i);

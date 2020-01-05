@@ -4,7 +4,7 @@ const es = require('event-stream');
 const path = require('path');
 const winston = require('winston');
 const async = require('async');
-const { nodes } = require('../.riak.config.js');
+const { riakClient } = require('../.riak.config.js');
 
 const logger = winston.createLogger({
   transports: [new winston.transports.File({ filename: 'combined.log' })],
@@ -18,7 +18,7 @@ logger.add(
   })
 );
 
-const client = new Riak.Client(nodes, (err, c) => {
+const client = riakClient((err, c) => {
   if (err) {
     logger.error(err);
   }
@@ -30,8 +30,7 @@ const client = new Riak.Client(nodes, (err, c) => {
     } else {
       logger.info('client.ping has resulted in a success!');
     }
-
-    const q = async.queue((stock, callback) => {
+    const updateStock = (stock, callback) => {
       const mapOp = new Riak.Commands.CRDT.UpdateMap.MapOperation();
       mapOp
         .setRegister('company', Buffer.from(stock.company))
@@ -45,18 +44,27 @@ const client = new Riak.Client(nodes, (err, c) => {
       const options = {
         bucketType: 'map',
         bucket: 'stocks',
+        w: 1,
         key: stock.symbol.toString(),
         op: mapOp,
       };
 
       client.updateMap(options, e => {
         if (e) {
-          logger.error(e);
-        } else {
-          callback();
+          throw new Error(e);
+        }
+        // callback();
+      });
+    };
+
+    const cargoQ = async.cargoQueue((tasks, callback) => {
+      async.each(tasks, updateStock, e => {
+        if (e) {
+          throw new Error(e);
         }
       });
-    }, 40);
+      callback();
+    }, 8);
 
     fs.createReadStream(
       path.resolve(__dirname, '../../sample_data/stocks.json'),
@@ -64,27 +72,23 @@ const client = new Riak.Client(nodes, (err, c) => {
         flags: 'r',
       }
     )
-      .on('finish', () => {
-        logger.info('Stream write to db has successfully completed!');
-        client.stop(e => {
-          if (e) {
-            logger.error(e);
-          } else {
-            console.log('Client connection closed');
-          }
-        });
-      })
       .pipe(es.split())
       .pipe(es.parse())
       .pipe(
-        es.map(stock => {
-          q.push(stock, e => {
-            if (e) {
-              logger.error(e);
-            }
-            logger.info(`finished processing ${stock.symbol}`);
-          });
-        })
+        es
+          .map(stock => {
+            cargoQ.push(stock);
+          })
+          .on('finish', () => {
+            logger.info('Stream write to db has successfully completed!');
+            client.stop(e => {
+              if (e) {
+                logger.error(e);
+              } else {
+                console.log('Client connection closed');
+              }
+            });
+          })
       );
   });
 });
