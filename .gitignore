@@ -115,3 +115,5 @@ TODO.*
 sample_data/
 newrelic.js
 lib/tickers.js
+*.pem
+*.amazonaws.com
