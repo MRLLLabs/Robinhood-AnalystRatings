@@ -1,9 +1,13 @@
+package riak;
 syntax = 'proto3';
 
 message RpbPutReq {
     required bytes bucket = 1;
     optional bytes key = 2;
-    optional bytes vclock = 3;
-    required RpbContent content = 4;
-    optional uint32 w = 5;
+    required RpbContent content = 3;
+}
+
+message RpbContent {
+    required bytes value = 1;
+    optional bytes content_type = 2;
 }
